@@ -22,48 +22,67 @@ if (isset($_GET["id"])) {
     </head>
     <script type="text/javascript">
         function guardar() {
-        $.ajax({
-            //Guardar/Editar Registro
-            url: "include/funciones.php",
-            type: "post",
-            data: $("#formulario").serialize(),
-            success: function (response) {
-            //console.log(response);
-            if ( response == "0" ) {
-                //Error clave de estancia ya existe
-                $( "<div>La matricula ya ha sido establecida en otra estancia.</div>" ).dialog({
+            var fecha_salida = new Date($("#fecha_salida").val());
+            var fecha_regreso = new Date($("#fecha_regreso").val());
+
+            if (fecha_salida > fecha_regreso) {
+                $( "<div>La fecha de salida no puede ser mayor que la fecha de regreso.</div>" ).dialog({
                     title:"Error",
                     resizable: false,
                     height: "auto",
                     width: 400,
                     modal: true,
                     buttons: {
-                    "Entendido": function() {
-                        $( this ).dialog( "close" );
-                    }
+                        "Entendido": function() {
+                            $( this ).dialog( "close" );
+                        }
                     }
                 });
-            } else {
-                $( "<div>Accion Completada.</div>" ).dialog({
-                title:"Acción Completada",
-                resizable: false,
-                height: "auto",
-                width: 400,
-                modal: true,
-                buttons: {
-                    "Entendido": function() {
-                    $( this ).dialog( "close" );
-                    document.location='xmlgeneral.xml';
+                return;
+            }
+            
+            $.ajax({
+                //Guardar/Editar Registro
+                url: "include/funciones.php",
+                type: "post",
+                data: $("#formulario").serialize(),
+                success: function (response) {
+                //console.log(response);
+                if ( response == "0" ) {
+                    //Error clave de estancia ya existe
+                    $( "<div>La matricula ya ha sido establecida en otra estancia.</div>" ).dialog({
+                        title:"Error",
+                        resizable: false,
+                        height: "auto",
+                        width: 400,
+                        modal: true,
+                        buttons: {
+                        "Entendido": function() {
+                            $( this ).dialog( "close" );
+                        }
+                        }
+                    });
+                } else {
+                    $( "<div>Accion Completada.</div>" ).dialog({
+                    title:"Acción Completada",
+                    resizable: false,
+                    height: "auto",
+                    width: 400,
+                    modal: true,
+                    buttons: {
+                        "Entendido": function() {
+                        $( this ).dialog( "close" );
+                        document.location='xmlgeneral.xml';
+                        }
                     }
+                    });
+                }
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                alert(xhr.status);
                 }
                 });
             }
-            },
-            error: function (xhr, ajaxOptions, thrownError) {
-            alert(xhr.status);
-            }
-            });
-        }
     </script>
     <body class="fondo_main">
         <br/><br/>

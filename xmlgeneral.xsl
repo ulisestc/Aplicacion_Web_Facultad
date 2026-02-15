@@ -118,6 +118,57 @@
                 </div>
               </div>
             </div>
+
+            <div class="card">
+              <div class="card-header" id="headingFour">
+                <h2 class="col">
+                  <button class="btn btn-link text_btn_acordeon" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
+                    Movilidad
+                  </button>
+                </h2>
+              </div>
+              <div id="collapseFour" class="collapse hidden" aria-labelledby="headingFour" data-parent="#accordionExample">
+                <div class="form-row">
+                  <div class="col" style="margin-top:10px;margin-left:10px">
+                    <button type="button" class="btn btn-success" name="button">
+                      <xsl:attribute name="onclick">
+                      agregar(4)
+                    </xsl:attribute>
+                    <i class="fas fa-plus-circle"></i>  Agregar Estancia
+                  </button>
+                </div>
+                <div class="col input-group" style="margin-top:10px;margin-left:20px">
+                  <span class="input-group-text span_search">Búsqueda Por Nombre</span>
+                  <input type="text" class="form-control input_search" placeholder="Nombre" id="searchTerm2" onkeyup="doSearch('materias','searchTerm2')"/>
+                </div>
+
+                </div>
+                <div class="card-body col-md-12">
+                  <table class="table" id="materias">
+                    <thead class="thead-dark">
+                      <th>Clave</th>
+                      <th>Matricula del Alumno</th>
+                      <th>Universidad Destino</th>
+                      <th>País</th>
+                      <th>Ciudad</th>
+                      <th>Investigador Anfitrión</th>
+                      <th>Fecha de Salida</th>
+                      <th>Fecha de Regreso</th>
+                      <th>Fuente de financiamiento</th>
+                      <th>Monto de Apoyo Otorgado</th>
+                      <th>Acciones</th>
+                    </thead>
+                    <tbody>
+                      <xsl:for-each select="facultad/posgrado/maestria/movilidad">
+                        <xsl:apply-templates select="estancia"/>
+                      </xsl:for-each>
+
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
       </body>
@@ -358,6 +409,37 @@
         </tbody>
       </table>
     </div>
+    </xsl:template>
+
+    <xsl:template match="estancia">
+    <tr>
+      <td><xsl:value-of select="@id"/></td>
+      <td><xsl:value-of select="matricula"/></td>
+      <td><xsl:value-of select="universidad"/></td>
+      <td><xsl:value-of select="pais"/></td>
+      <td><xsl:value-of select="ciudad"/></td>
+      <td><xsl:value-of select="investigador"/></td>
+      <td><xsl:value-of select="fecha_salida"/></td>
+      <td><xsl:value-of select="fecha_regreso"/></td>
+      <td><xsl:value-of select="financiamiento"/></td>
+      <td>$<xsl:value-of select="monto_apoyo"/></td>
+
+      <td>
+        <button type="button" class="btn btn-danger" title="Eliminar Estancia" style="height:32px; width:32px;">
+          <xsl:attribute name="onclick">
+            eliminar('<xsl:value-of select="@id"/>', 4)
+          </xsl:attribute>
+          <i class="fas fa-trash"></i>
+        </button>
+
+        <button type="button" class="btn btn-info" title="Editar Estancia" style="margin-left:5px; height:32px; width:32px;">
+          <xsl:attribute name="onclick">
+            editar('<xsl:value-of select="@id"/>', 4)
+          </xsl:attribute>
+          <i class="fas fa-edit"></i>
+        </button>
+      </td>
+    </tr>
   </xsl:template>
 
   <xsl:template match="materia">

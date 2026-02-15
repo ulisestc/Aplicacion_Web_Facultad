@@ -139,12 +139,12 @@
                 </div>
                 <div class="col input-group" style="margin-top:10px;margin-left:20px">
                   <span class="input-group-text span_search">Búsqueda Por Nombre</span>
-                  <input type="text" class="form-control input_search" placeholder="Nombre" id="searchTerm2" onkeyup="doSearch('materias','searchTerm2')"/>
+                  <input type="text" class="form-control input_search" placeholder="Nombre" id="searchTermMovilidad" onkeyup="doSearch('movilidad','searchTermMovilidad')"/>
                 </div>
 
                 </div>
                 <div class="card-body col-md-12">
-                  <table class="table" id="materias">
+                  <table class="table" id="movilidad">
                     <thead class="thead-dark">
                       <th>Clave</th>
                       <th>Matricula del Alumno</th>
@@ -184,6 +184,9 @@
             case 3: //Para Materias
               window.location.href = "materias.php";
               break;
+            case 4: // Para estancia
+              window.location.href = "movilidad.php"
+              break;
 
           }
         }
@@ -197,6 +200,9 @@
               break;
             case 3: //Para ISI
               window.location.href = "materias.php?id="+id;
+              break;
+            case 4: //Para Movilidad
+              window.location.href = "movilidad.php?id="+id;
               break;
           }
         }
@@ -231,6 +237,10 @@
             case 3: //Para Materias
               aviso="¿Eliminar Materia?"
               aviso2="Materia Eliminado"
+              break;
+            case 4: //Para Movilidad
+              aviso="¿Eliminar Estancia?"
+              aviso2="Estancia Eliminada"
               break;
           }
 

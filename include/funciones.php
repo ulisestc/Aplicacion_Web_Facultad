@@ -229,6 +229,14 @@ switch ($_POST["acc"]) {
         for ($i=0; $i < count($dato); $i++) { unset($dato[$i][0]); }
         $xml->asXML("../xmlgeneral.xml");
         break;
+      case 4:
+        #Eliminar Estancia de Movilidad
+        $dato = $xml->xpath("/facultad/posgrado/maestria/movilidad/estancia[@id='".$id."']");
+        if (count($dato) > 0) {
+          unset($dato[0][0]);
+        }
+        $xml->asXML("../xmlgeneral.xml");
+        break;
     }
     break;
   default:

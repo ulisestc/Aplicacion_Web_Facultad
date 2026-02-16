@@ -111,7 +111,7 @@ if (isset($_GET["id"])) {
                     <div class="form-row">
                     <div class="form-group col-md-4">
                         <label>País:</label>
-                        <select name="pais" id="pais" class="form-control" required <?php if (isset($_GET["id"])) { echo "disabled"; }?>>
+                        <select name="pais" id="pais" class="form-control" required>
                             <option value="">Selecciona un país...</option>
                             <option value="México">México</option>
                             <option value="Estados Unidos">Estados Unidos</option>

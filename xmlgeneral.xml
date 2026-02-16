@@ -300,14 +300,12 @@
         </area>
       </areas>
       <personal>
-        <!--Seccion 1-->
         <profesores>
           <profesor id_profesor="1">
             <nombre>Mireya Tovar Vidal</nombre>
             <materias_imp>
               <materia clave_mat="100409344"/>
-              <!--Solo una referencia o se repita la info? (Esto es lo que preguntaremos)-->
-            </materias_imp>
+              </materias_imp>
             <ubicacion>CC01</ubicacion>
             <correo_electronico>mtovarvidal@gmail.com</correo_electronico>
             <publicaciones>
@@ -363,7 +361,6 @@
               </publicacion>
             </publicaciones>
           </profesor>
-          <!--Profesores de Sist. Distribuidos-->
           <profesor id_profesor="5">
             <nombre>Miguel Ángel León Chávez</nombre>
             <materias_imp>
@@ -424,7 +421,6 @@
               </publicacion>
             </publicaciones>
           </profesor>
-          <!--Profesores de ISI-->
           <profesor id_profesor="9">
             <nombre>Guillermo De Ita Luna</nombre>
             <materias_imp>
@@ -487,7 +483,6 @@
               </publicacion>
             </publicaciones>
           </profesor>
-          <!--Profesores de Computación Matemática-->
           <profesor id_profesor="13">
             <nombre>María de Lourdes Sandoval Solís</nombre>
             <materias_imp>
@@ -551,7 +546,6 @@
         </profesores>
       </personal>
       <materias>
-        <!--Materias de Bases de datos-->
         <materia es="MA">
           <clave_mat>100036799</clave_mat>
           <nombre>Mineria de Datos</nombre>
@@ -584,8 +578,6 @@
           <salon>208</salon>
           <periodo>Primavera 2020</periodo>
         </materia>
-        <!--Materias de Bases de datos-->
-        <!--Materias de Sistemas Distribuidos-->
         <materia es="MA">
           <clave_mat>100443488</clave_mat>
           <nombre>Inteligencia Artificial</nombre>
@@ -618,8 +610,6 @@
           <salon>203</salon>
           <periodo>Primavera 2020</periodo>
         </materia>
-        <!--Materias de Sistemas Distribuidos-->
-        <!--Materias de ISI-->
         <materia es="MA">
           <clave_mat>100067111</clave_mat>
           <nombre>Modelado y Simulación</nombre>
@@ -652,8 +642,6 @@
           <salon>204</salon>
           <periodo>Primavera 2020</periodo>
         </materia>
-        <!--Materias de ISI-->
-        <!--Materias de CM-->
         <materia es="MA">
           <clave_mat>100190255</clave_mat>
           <nombre>Optativa II (Probabilidad y Estadística)</nombre>
@@ -686,21 +674,10 @@
           <salon>205</salon>
           <periodo>Primavera 2020</periodo>
         </materia>
-        <!--Materias de CM-->
-      </materias>
+        </materias>
       <movilidad>
-        <estancia id="1">
-          <matricula>202255315</matricula>
-          <universidad>Universidad Nacional Autónoma de México</universidad>
-          <pais>México</pais>
-          <ciudad>Ciudad de México</ciudad>
-          <investigador>Luis Yael Méndez Sánchez</investigador>
-          <fecha_salida>2022-05-15</fecha_salida>
-          <fecha_regreso>2022-05-20</fecha_regreso>
-          <financiamiento>Beca Mixta</financiamiento>
-          <monto_apoyo>10000</monto_apoyo>
-        </estancia>
-      </movilidad>
+        
+      <estancia id="1"><matricula/><universidad>UNAM</universidad><pais>Colombia</pais><ciudad>Ciudad de México</ciudad><investigador>Luis Yael Méndez Sánchez</investigador><fecha_salida>2022-05-15</fecha_salida><fecha_regreso>2022-05-20</fecha_regreso><financiamiento>Beca Mixta</financiamiento><monto_apoyo>10000</monto_apoyo></estancia></movilidad>
     </maestria>
     <doctorado/>
   </posgrado>

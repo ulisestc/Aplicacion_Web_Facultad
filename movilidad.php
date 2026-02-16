@@ -97,7 +97,7 @@ if (isset($_GET["id"])) {
                     <div class="form-group col-md-4">
                         <label>Matricula del alumno:</label>
                         <input type="number" name="matricula" id="matricula" class="form-control" required
-                        <?php if (isset($_GET["id"])) { echo "value='".htmlspecialchars($estancia[0]->matricula, ENT_QUOTES)."' disabled"; }?>>
+                        <?php if (isset($_GET["id"])) { echo "value='".htmlspecialchars($estancia[0]->matricula, ENT_QUOTES)."' readonly"; }?>>
                         <input type="hidden" name="id" id="id" value="<?php echo (isset($_GET["id"])?htmlspecialchars($_GET["id"], ENT_QUOTES):"") ?>" />
                         <input type="hidden" name="acc" id="acc" value="<?php echo (isset($_GET["id"])?"2":"1") ?>" />
                         <input type="hidden" name="tipo" id="tipo" value="4" />

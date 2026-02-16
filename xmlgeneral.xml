@@ -676,8 +676,18 @@
         </materia>
         </materias>
       <movilidad>
-        
-      <estancia id="1"><matricula/><universidad>UNAM</universidad><pais>Colombia</pais><ciudad>Ciudad de México</ciudad><investigador>Luis Yael Méndez Sánchez</investigador><fecha_salida>2022-05-15</fecha_salida><fecha_regreso>2022-05-20</fecha_regreso><financiamiento>Beca Mixta</financiamiento><monto_apoyo>10000</monto_apoyo></estancia></movilidad>
+      <estancia id="1">
+        <matricula>202255315</matricula>
+        <universidad>Universidad Nacional Autónoma de México</universidad>
+        <pais>México</pais>
+        <ciudad>Ciudad de México</ciudad>
+        <investigador>Luis Yael Méndez Sánchez</investigador>
+        <fecha_salida>2022-05-15</fecha_salida>
+        <fecha_regreso>2022-05-20</fecha_regreso>
+        <financiamiento>Beca Mixta</financiamiento>
+        <monto_apoyo>10000</monto_apoyo>
+        </estancia>
+      </movilidad>
     </maestria>
     <doctorado/>
   </posgrado>

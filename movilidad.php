@@ -49,8 +49,8 @@ if (isset($_GET["id"])) {
                 success: function (response) {
                 //console.log(response);
                 if ( response == "0" ) {
-                    //Error clave de estancia ya existe
-                    $( "<div>La matricula ya ha sido establecida en otra estancia.</div>" ).dialog({
+                    //Error: El alumno no existe
+                    $( "<div>Error: La matrícula ingresada no existe en los registros de alumnos.</div>" ).dialog({
                         title:"Error",
                         resizable: false,
                         height: "auto",
@@ -111,8 +111,14 @@ if (isset($_GET["id"])) {
                     <div class="form-row">
                     <div class="form-group col-md-4">
                         <label>País:</label>
-                        <input type="text" name="pais" id="pais" class="form-control" required
-                        <?php if (isset($_GET["id"])) { echo "value='".htmlspecialchars($estancia[0]->pais, ENT_QUOTES)."'"; }?>>
+                        <select name="pais" id="pais" class="form-control" required <?php if (isset($_GET["id"])) { echo "disabled"; }?>>
+                            <option value="">Selecciona un país...</option>
+                            <option value="México">México</option>
+                            <option value="Estados Unidos">Estados Unidos</option>
+                            <option value="Canadá">Canadá</option>
+                            <option value="España">España</option>
+                            <option value="Colombia">Colombia</option>
+                        </select>
                     </div>
                     <div class="form-group col-md-7">
                         <label>Ciudad:</label>

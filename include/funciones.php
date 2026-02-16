@@ -109,26 +109,8 @@ switch ($_POST["acc"]) {
           echo $xml->asXML("../xmlgeneral.xml");
         }
         break;
-
-      // MODIFICACIÓN 1: Aquí va el case 4 de CREAR (solo inserta, no borra)
-      case 4: 
-        $dato = $xml->xpath("/facultad/posgrado/maestria/TUS_NODOS/TU_ENTIDAD[TU_ID_UNICO='".$id."']");
-
-        if (count($dato) > 0) {
-          echo "0"; // Si ya existe el ID, devolvemos error
-        } else {
-          // Si no existe, creamos el registro nuevo
-          $nuevoRegistro = $xml->posgrado->maestria->TUS_NODOS->addChild('TU_ENTIDAD');
-          $nuevoRegistro->addChild('TU_ID_UNICO', $id);
-          $nuevoRegistro->addChild('campo2', $nombre_variable2);
-          $nuevoRegistro->addChild('campo3', $nombre_variable3);
-
-          echo $xml->asXML("../xmlgeneral.xml");
-        }
-        break;
     }
     break;
-
   case '2': #editar Registro del XML
     //Obtener variables
     foreach($_POST as $nombre_campo => $valor) {
@@ -228,26 +210,29 @@ switch ($_POST["acc"]) {
         echo $xml->asXML("../xmlgeneral.xml");
         break;
 
-      // MODIFICACIÓN 2: Aquí va tu lógica de EDITAR (borra viejo, inserta nuevo)
-      case 4: 
-        $dato = $xml->xpath("/facultad/posgrado/maestria/TUS_NODOS/TU_ENTIDAD[TU_ID_UNICO='".$id."']");
-
+      case 4:
+      #Editar Movilidad
+        $dato = $xml->xpath("/facultad/posgrado/maestria/movilidad/estancia[@id='".$id."']");
+        //Eliminar anterior
         if (count($dato) > 0) {
-          unset($dato[0][0]); // Elimina el registro viejo
+          unset($dato[0][0]);
         }
-
-        // Inserta el nuevo actualizado
-        $nuevoRegistro = $xml->posgrado->maestria->TUS_NODOS->addChild('TU_ENTIDAD');
-
-        $nuevoRegistro->addChild('TU_ID_UNICO', $id);
-        $nuevoRegistro->addChild('campo2', $nombre_variable2);
-        $nuevoRegistro->addChild('campo3', $nombre_variable3);
-
+        //Insertar nuevo
+        $estancia = $xml->posgrado->maestria->movilidad->addChild('estancia');
+        $estancia->addAttribute('id', $id);
+        $estancia->addChild('matricula', $matricula);
+        $estancia->addChild('universidad', $universidad);
+        $estancia->addChild('pais', $pais);
+        $estancia->addChild('ciudad', $ciudad);
+        $estancia->addChild('investigador', $investigador);
+        $estancia->addChild('fecha_salida', $fecha_salida);
+        $estancia->addChild('fecha_regreso', $fecha_regreso);
+        $estancia->addChild('financiamiento', $financiamiento);
+        $estancia->addChild('monto_apoyo', $monto);
         echo $xml->asXML("../xmlgeneral.xml");
         break;
     }
     break;
-
   case '3': #eliminar Registro del XML
     $id=$_POST["id"];
     $tipo=$_POST["tipo"];
@@ -278,13 +263,6 @@ switch ($_POST["acc"]) {
         for ($i=0; $i < count($dato); $i++) {
           unset($dato[$i][0]);
         }
-        $xml->asXML("../xmlgeneral.xml");
-        break;
-
-      // MODIFICACIÓN 3: Lógica para ELIMINAR de tu módulo
-      case 4:
-        $dato = $xml->xpath("/facultad/posgrado/maestria/TUS_NODOS/TU_ENTIDAD[TU_ID_UNICO='".$id."']");
-        unset($dato[0][0]);
         $xml->asXML("../xmlgeneral.xml");
         break;
     }

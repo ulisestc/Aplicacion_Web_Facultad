@@ -109,6 +109,35 @@ switch ($_POST["acc"]) {
           echo $xml->asXML("../xmlgeneral.xml");
         }
         break;
+      case 4:
+      #Insertar Estancia de Movilidad
+        // Validar si el alumno existe
+        $existeAlumno = $xml->xpath("/facultad/posgrado/maestria/areas/area/alumnos/alumno[matricula='".$matricula."']");
+        
+        if ( count($existeAlumno) == 0 ) {
+          // Si el arreglo está vacío, el alumno no existe. 
+          echo "0";
+        } else {
+          // Generar ID Único
+          $estancias = $xml->xpath("/facultad/posgrado/maestria/movilidad/estancia");
+          $nuevoID = count($estancias) + 1; 
+
+          // Realizar inserción del nodo
+          $estancia = $xml->posgrado->maestria->movilidad->addChild('estancia');
+          $estancia->addAttribute('id', $nuevoID);
+          
+          $estancia->addChild('matricula', $matricula);
+          $estancia->addChild('universidad', $universidad);
+          $estancia->addChild('pais', $pais);
+          $estancia->addChild('ciudad', $ciudad);
+          $estancia->addChild('investigador', $investigador);
+          $estancia->addChild('fecha_salida', $fecha_salida);
+          $estancia->addChild('fecha_regreso', $fecha_regreso);
+          $estancia->addChild('financiamiento', $financiamiento);
+          $estancia->addChild('monto_apoyo', $monto_apoyo);
+          echo $xml->asXML("../xmlgeneral.xml");
+        }
+        break;
     }
     break;
   case '2': #editar Registro del XML

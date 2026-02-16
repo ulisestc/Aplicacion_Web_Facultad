@@ -199,6 +199,7 @@ switch ($_POST["acc"]) {
         $estancia->addChild('fecha_regreso', $fecha_regreso);
         $estancia->addChild('financiamiento', $financiamiento);
         $estancia->addChild('monto_apoyo', $monto_apoyo);
+
         echo $xml->asXML("../xmlgeneral.xml");
         break;
     } // Fin switch tipo
